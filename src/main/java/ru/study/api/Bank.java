@@ -7,6 +7,8 @@ import ru.study.util.CounterUtil;
 import ru.study.util.ParserUtil;
 
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 @Data
 public class Bank {
@@ -19,8 +21,17 @@ public class Bank {
         randomizerService = new RandomizerService(accountsMap);
     }
 
-    public void startProcessingTransfers(int m) {
-        for (int i = 0; i < m; i++) {
+    public void startProcessingTransfers(int threadsQuantity, int iterationsQuantity) {
+        ExecutorService executor = Executors.newFixedThreadPool(threadsQuantity);
+        for (int i = 0; i < threadsQuantity; i++) {
+            executor.submit(() -> this.processTransfers(iterationsQuantity));
+        }
+        executor.shutdown();
+        while (!executor.isTerminated()) {}
+    }
+
+    public void processTransfers(int iterations) {
+        for (int i = 0; i < iterations; i++) {
             String[] randomAccountsArr = randomizerService.getRandomAccounts();
             Account from = accountsMap.get(randomAccountsArr[0]);
             Account to = accountsMap.get(randomAccountsArr[1]);
