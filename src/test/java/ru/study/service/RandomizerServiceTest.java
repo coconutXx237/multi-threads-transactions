@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class RandomizerServiceTest {
 
-    ConcurrentHashMap<String, Account> resultMap = ParserUtil.parseCsvToMap("src/main/resources/accounts.csv");
+    ConcurrentHashMap<String, Account> resultMap = ParserUtil.parseCsvToMap("src/main/resources/test.csv");
     RandomizerService randomizerService = new RandomizerService(resultMap);
     Account account = new Account("bc97bfdc-c34d-44cc-b428-245971b8943f", 100.50);
 

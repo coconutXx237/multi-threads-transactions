@@ -36,14 +36,14 @@ public class Bank {
             Account from = accountsMap.get(randomAccountsArr[0]);
             Account to = accountsMap.get(randomAccountsArr[1]);
             if (from.getAmount() <= 1) {
-                System.out.println("ERROR > > > Мало средств на счёте " + from.getAmount() + " : " + from.getAmount());
+            //    System.out.println("ERROR > > > Мало средств на счёте " + from.getAmount() + " : " + from.getAmount());
                 continue;
             }
             double randomAmount = randomizerService.getRandomAmount(from);
             if (from.getAmount() > randomAmount) {
                 transfer(from, to, randomAmount);
             } else {
-                System.out.println("ERROR > > > Cannot transfer amount of " + randomAmount + " from " + from + " to " + to + ", as fromAmount is " + from.getAmount());
+            //    System.out.println("ERROR > > > Cannot transfer amount of " + randomAmount + " from " + from + " to " + to + ", as fromAmount is " + from.getAmount());
             }
         }
     }
@@ -67,14 +67,14 @@ public class Bank {
                 double newAmountFrom = currentAmountFrom - amount;
                 double newAmountTo = currentAmountTo + amount;
 
-                System.out.println("BEFORE transfer >>> from " + accountsMap.get(from.getAccountId())
-                        + ", to: " + accountsMap.get(to.getAccountId()));
+            //    System.out.println("BEFORE transfer >>> from " + accountsMap.get(from.getAccountId())
+           //             + ", to: " + accountsMap.get(to.getAccountId()));
 
                 accountsMap.get(from.getAccountId()).setAmount(newAmountFrom);
                 accountsMap.get(to.getAccountId()).setAmount(newAmountTo);
 
-                System.out.println("AFTER transfer >>> from " + accountsMap.get(from.getAccountId())
-                        + ", to: " + accountsMap.get(to.getAccountId()));
+           //     System.out.println("AFTER transfer >>> from " + accountsMap.get(from.getAccountId())
+           //             + ", to: " + accountsMap.get(to.getAccountId()));
             }
         }
     }

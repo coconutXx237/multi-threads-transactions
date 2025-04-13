@@ -9,7 +9,7 @@ public class ParserUtilTest {
 
     @Test
     void properCsvIsParsedToMapSuccessfully() {
-        var resultMap = ParserUtil.parseCsvToMap("src/main/resources/accounts.csv");
+        var resultMap = ParserUtil.parseCsvToMap("src/main/resources/test.csv");
 
         assertEquals(20, resultMap.size());
         assertInstanceOf(Account.class, resultMap.get("bc97bfdc-c34d-44cc-b428-245971b8943f"));

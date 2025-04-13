@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CounterUtilTest {
 
-    ConcurrentHashMap<String, Account> resultMap = ParserUtil.parseCsvToMap("src/main/resources/accounts.csv");
+    ConcurrentHashMap<String, Account> resultMap = ParserUtil.parseCsvToMap("src/main/resources/test.csv");
 
     @Test
     void countsTotalAmountCorrectly() {
